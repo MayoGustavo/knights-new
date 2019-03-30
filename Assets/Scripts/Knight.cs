@@ -15,7 +15,7 @@ public class Knight : MonoBehaviour {
     void Awake()
     {
         _image = GetComponent<Image>();
-        _text = transform.FindChild("Sequence").GetComponent<Text>();
+        _text = transform.Find("Sequence").GetComponent<Text>();
 		_button = GetComponent<Button>();
     }
 
