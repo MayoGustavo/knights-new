@@ -3632,7 +3632,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -3651,14 +3651,14 @@ RectTransform:
   - {fileID: 25729241}
   - {fileID: 129845673}
   - {fileID: 388426762}
+  - {fileID: 1252858152}
   - {fileID: 428154613}
   - {fileID: 195274750}
   - {fileID: 1710845517}
-  - {fileID: 1252858152}
+  - {fileID: 1588125640}
   - {fileID: 228218101}
   - {fileID: 846200799}
   - {fileID: 775555796}
-  - {fileID: 1588125640}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8057,7 +8057,7 @@ RectTransform:
   m_Children:
   - {fileID: 1502273428}
   m_Father: {fileID: 538885056}
-  m_RootOrder: 7
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -10013,7 +10013,7 @@ RectTransform:
   m_Children:
   - {fileID: 105286013}
   m_Father: {fileID: 538885056}
-  m_RootOrder: 11
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -10310,6 +10310,11 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11486502, guid: 8c1c5238abc08a045b9d4bd27d50e6a2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3947600289635109039, guid: 8c1c5238abc08a045b9d4bd27d50e6a2,
+        type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
@@ -11408,7 +11413,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22466752, guid: 70472e5ffa4610544a5ba186b3b76e2e, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.000061035156
+      value: -0.00012207031
       objectReference: {fileID: 0}
     - target: {fileID: 22466752, guid: 70472e5ffa4610544a5ba186b3b76e2e, type: 3}
       propertyPath: m_AnchoredPosition.y

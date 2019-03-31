@@ -197,7 +197,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1106080649}
   - component: {fileID: 1106080648}
-  - component: {fileID: 1106080647}
   - component: {fileID: 1106080646}
   - component: {fileID: 1106080645}
   m_Layer: 0
@@ -216,14 +215,6 @@ AudioListener:
   m_GameObject: {fileID: 1106080644}
   m_Enabled: 1
 --- !u!124 &1106080646
-Behaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1106080644}
-  m_Enabled: 1
---- !u!92 &1106080647
 Behaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -557,7 +548,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0

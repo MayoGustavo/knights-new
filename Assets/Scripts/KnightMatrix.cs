@@ -9,8 +9,12 @@ public class KnightMatrix : MonoBehaviour {
 
 	public Knight[,] _kKnights = new Knight[7, 7];
 
+    private bool _movingKnight;
+
     void Awake()
     {
+        _movingKnight = false;
+
         if (instance == null)
             instance = this;
 
@@ -29,7 +33,10 @@ public class KnightMatrix : MonoBehaviour {
 
     public void AttemptMoveKnight (int content, int sequence)
     {
+        if (_movingKnight) return;
         if (content != 1) return;
+
+        _movingKnight = true;
 
         for (int row = 0; row < _kKnights.GetLength(0); row++)
         {
@@ -58,10 +65,22 @@ public class KnightMatrix : MonoBehaviour {
                  ( (i_NewCol >= 0) && (i_NewCol < _kKnights.GetLength(1)) )  )
             {
                 if (_kKnights[i_NewRow, i_NewCol].i_SquareContent == 0)
-                    MoveKnight(row, col, i_NewRow, i_NewCol);
+                    HideKnightAnimation(row, col, i_NewRow, i_NewCol);
             }
         }
     }
+
+
+    private void HideAnimationCallback(int rowFrom, int colFrom, int rowTo, int colTo)
+    {
+        MoveKnight(rowFrom, colFrom, rowTo, colTo);
+    }
+
+    private void HideKnightAnimation (int rowFrom, int colFrom, int rowTo, int colTo)
+    {
+        _kKnights[rowFrom, colFrom].GetComponent<Knight>().HideAnimation(HideAnimationCallback, rowFrom, colFrom, rowTo, colTo);
+    }
+    
 
     private void MoveKnight (int rowFrom, int colFrom, int rowTo, int colTo)
     {
@@ -105,7 +124,12 @@ public class KnightMatrix : MonoBehaviour {
         _kKnights[row1,col1] = _kKnights[row2,col2];
         _kKnights[row2,col2] = b_KnightAuxiliar;
 
-        CheckSequence();
+        ShowKnightAnimation(rowTo, colTo);
+    }
+
+    private void ShowKnightAnimation(int rowTo, int colTo)
+    {
+        _kKnights[rowTo, colTo].GetComponent<Knight>().ShowAnimation(CheckSequence);
     }
 
     private void CheckSequence ()
@@ -124,6 +148,7 @@ public class KnightMatrix : MonoBehaviour {
                 }
                 else
                 {
+                    _movingKnight = false;
                     return;
                 }
             }
