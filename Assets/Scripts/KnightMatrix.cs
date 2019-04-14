@@ -31,12 +31,69 @@ public class KnightMatrix : MonoBehaviour {
 
     }
 
+    private void Start()
+    {
+        IdleBoard();
+    }
+
+    private void CalculateKnightsReadyToMove ()
+    {
+        for (int row = 0; row < _kKnights.GetLength(0); row++)
+        {
+            for (int col = 0; col < _kKnights.GetLength(1); col++)
+            {
+                if (_kKnights[row, col].i_SquareContent == 1)
+                {
+                    bool canMove = CheckPossibleMoves(row, col);
+                    if (canMove)
+                    {
+                        _kKnights[row, col].HightlightTile(canMove);
+                        print(_kKnights[row, col].i_Sequence);
+                    }
+                }
+            }
+        }
+    }
+
+    private void ShutdownHighlightAnimation()
+    {
+        for (int row = 0; row < _kKnights.GetLength(0); row++)
+        {
+            for (int col = 0; col < _kKnights.GetLength(1); col++)
+            {
+                if (_kKnights[row, col].i_SquareContent == 1)
+                {
+                    _kKnights[row, col].HightlightTile(false);
+                }
+            }
+        }
+    }
+
+    private bool CheckPossibleMoves(int row, int col)
+    {
+        int[] i_PossibleRows = new int[8] { 2, 2, 1, -1, -2, -2, -1, 1 };
+        int[] i_PossibleCols = new int[8] { 1, -1, -2, -2, -1, 1, 2, 2 };
+
+        for (int tryPos = 0; tryPos < i_PossibleRows.Length; tryPos++)
+        {
+            int i_NewRow = row + i_PossibleRows[tryPos];
+            int i_NewCol = col + i_PossibleCols[tryPos];
+
+            if (((i_NewRow >= 0) && (i_NewRow < _kKnights.GetLength(0))) &&
+                 ((i_NewCol >= 0) && (i_NewCol < _kKnights.GetLength(1))))
+            {
+                if (_kKnights[i_NewRow, i_NewCol].i_SquareContent == 0)
+                    return true;
+            }
+        }
+
+        return false;
+    }
+
     public void AttemptMoveKnight (int content, int sequence)
     {
         if (_movingKnight) return;
         if (content != 1) return;
-
-        _movingKnight = true;
 
         for (int row = 0; row < _kKnights.GetLength(0); row++)
         {
@@ -65,7 +122,11 @@ public class KnightMatrix : MonoBehaviour {
                  ( (i_NewCol >= 0) && (i_NewCol < _kKnights.GetLength(1)) )  )
             {
                 if (_kKnights[i_NewRow, i_NewCol].i_SquareContent == 0)
+                {
+                    _movingKnight = true;
+                    ShutdownHighlightAnimation();
                     HideKnightAnimation(row, col, i_NewRow, i_NewCol);
+                }
             }
         }
     }
@@ -148,7 +209,7 @@ public class KnightMatrix : MonoBehaviour {
                 }
                 else
                 {
-                    _movingKnight = false;
+                    IdleBoard();
                     return;
                 }
             }
@@ -157,6 +218,14 @@ public class KnightMatrix : MonoBehaviour {
         GameFinished();
     }
 
+
+    private void IdleBoard()
+    {
+        CalculateKnightsReadyToMove();
+        _movingKnight = false;
+    }
+
+    
     private void GameFinished () 
     {
         Menu.instance.ShowModalWindow(4);

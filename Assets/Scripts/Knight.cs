@@ -6,6 +6,7 @@ public class Knight : MonoBehaviour {
 
     const string SHOW = "show";
     const string HIDE = "hide";
+    const string HIGHLIGHT = "highlight";
 
     public bool b_IsVisible;
     public int i_SquareContent;
@@ -100,4 +101,8 @@ public class Knight : MonoBehaviour {
         mAnimItem.cb(mAnimItem.rFrom, mAnimItem.cFrom, mAnimItem.rTo, mAnimItem.cTo);
     }
 
+    public void HightlightTile(bool isHighlighted)
+    {
+        _tor.SetBool(HIGHLIGHT, isHighlighted);
+    }
 }
