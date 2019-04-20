@@ -51,6 +51,10 @@ public class Knight : MonoBehaviour {
 		{
 			_image.enabled = false;
 			_text.enabled = false;
+            if (_tor)
+            {
+                _tor.enabled = false;
+            }
 		}
 		_text.text = i_Sequence.ToString();
 	}
