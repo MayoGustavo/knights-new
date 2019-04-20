@@ -36,6 +36,11 @@ public class KnightMatrix : MonoBehaviour {
         IdleBoard();
     }
 
+    private void OnEnable()
+    {
+        IdleBoard();
+    }
+
     private void CalculateKnightsReadyToMove ()
     {
         for (int row = 0; row < _kKnights.GetLength(0); row++)
